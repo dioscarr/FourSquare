@@ -1,0 +1,39 @@
+﻿@model foursquare.Models.HomeModel
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Secondary_Layout.cshtml";
+}
+
+
+<section class="contentLogin">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 loginMain">
+                <div class="loginContent">
+                    <div class="pull-left loginLogo">
+                        <img class="welcomeContentImg" src="~/images/foursquare.svg" />
+                        <h2 class="welcomeContentTitle text_uppercase">conference 2016</h2>
+                    </div>
+                    <div class="pull-right loginFormContent">
+                        <span class="loginFormContentTitle">The site is reserved for those who have <br> received an invitation to Foursquare 2016. </span>
+                        <form name="frm2" id="frm2" action="~/welcome" method="POST">
+                            <input type="hidden" name="page" value="">
+                            <input type="password" name="pwrd" id="pwrd" value="" style="margin-top:1px;">
+                            <input type="submit" value="Submit" border="0">
+                            <span class="main" style="color:#747474;">Please enter your password.</span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(".contentLogin").parent().addClass("loginPage");
+    </script>
+
+}

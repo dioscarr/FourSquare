@@ -1,0 +1,30 @@
+﻿@model foursquare.Models.HomeModel
+@{
+    ViewBag.Title = "BioSpeakers";
+    Layout = "~/Views/Shared/_Secondary_Layout.cshtml";
+}
+
+
+<section class="bioPage">
+    <div class="container">
+        <div class="row bioPageContent">
+            <div class="col-xs-12">
+                <a href="#" class="pull-right" onclick="window.close();">
+                    <img src="http://magiccampaign.com/img/cd-icon-close-mobile.svg">
+                </a>
+            </div>
+            <div class="col-xs-5">
+                <img src="@Model.speakerssBio.Picture">
+            </div>
+
+            <div class="col-xs-7">
+                <h4 class="bioName">@Model.speakerssBio.BioName</h4>
+                <p class="bioTitle">
+                    @Model.speakerssBio.BioTitle
+                </p>
+                @Html.Raw(@Model.speakerssBio.Bio)
+            </div>
+        </div>
+
+    </div>
+</section>
