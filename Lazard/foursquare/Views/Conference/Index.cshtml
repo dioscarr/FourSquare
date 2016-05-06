@@ -1,0 +1,114 @@
+﻿@model foursquare.Models.HomeModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12 welcomeContentTextTitle">
+        <h4 class="">
+            <p></p>
+            @foreach (var year in Model.Years)
+            {
+                if (@ViewBag.CurrentYear == @year)
+                {
+                    @year
+                }
+            }
+            Speakers
+        </h4>
+    </div>
+    <div class="col-xs-12 welcomeContentText speakersContentText">
+        <p>
+            @foreach (var speaker in Model.speakers)
+            {
+                if (@speaker.Year == @Model.firstYear)
+                {
+                    <a href="~/Conference/BioSpeakers/@speaker.Id" onclick="window.open(this.href,'','width=600,height=500,top=100,left=100');return false;" class="confMemberBio">
+                        <span>@speaker.Name, </span> @Html.Raw(@speaker.Title)
+                    </a>
+                    <br>
+                }
+                else
+                {
+                    <span>@speaker.Name, </span>@Html.Raw(@speaker.Title) <br>
+                }
+
+            }
+        </p>
+    </div>
+    <div class="col-xs-12 welcomeContentTextTitle">
+        <h4 class="">
+            <p></p>
+            @foreach (var year in Model.Years)
+            {
+                if (@ViewBag.CurrentYear == @year)
+                {
+                    @year
+                }
+            }
+            Moderators
+        </h4>
+    </div>
+    <div class="col-xs-12 welcomeContentText speakersContentText">
+        <p>
+
+            @foreach (var moderator in Model.moderators)
+            {
+                if (@moderator.Year == @Model.firstYear)
+                {
+                    <a href="~/Conference/BioModerators/@moderator.Id" onclick="window.open(this.href, '', 'width=600,height=500,top=100,left=100'); return false;" class="confMemberBio">
+                        <span>@moderator.Name, </span> @Html.Raw(@moderator.Title)
+                    </a>
+                    <br>
+                }
+                else
+                {
+                    <span>@moderator.Name, </span> @Html.Raw(@moderator.Title) <br>
+                }
+
+            }
+
+        </p>
+    </div>
+    <div class="col-xs-12 welcomeContentTextTitle">
+        <h4 class="">
+            <p></p>
+            @foreach (var year in Model.Years)
+            {
+                if (@ViewBag.CurrentYear == @year)
+                {
+                    @year
+                }
+            }
+            Program
+        </h4>
+    </div>
+    <div class="col-xs-12 welcomeContentText speakersContentText">
+        @{
+            DateTime? first = null;
+        }
+        @foreach (var program in Model.program)
+        {
+            
+            <p class="speakersContentTitlte">
+
+                @if (program.Date != first)
+                {
+                    @String.Format("{0:dddd, MMMM d}", @program.Date)
+                    first = program.Date;
+                }
+
+            </p>
+            <div class="row schedule">
+                <div class="col-lg-1 col-md-2 col-xs-3">
+                    @String.Format("{0:h:mm tt}", @program.Time)
+                </div>
+                <div class="col-lg-11 col-md-10 col-xs-9">
+                    @Html.Raw(@program.Content)
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

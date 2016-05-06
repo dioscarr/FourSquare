@@ -1,0 +1,20 @@
+﻿@model foursquare.Models.HomeModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Current = "Hosts";
+}
+
+<div class="row">
+    <div class="col-xs-12 welcomeContentTextTitle">
+        <h4 class=""><p></p>
+            @Model.hosts.Title
+        </h4>
+    </div>
+    <div class="col-xs-12 welcomeContentText">
+        <p>            
+            @Html.Raw(@Model.hosts.Content)
+        </p>
+    </div>
+</div>
+

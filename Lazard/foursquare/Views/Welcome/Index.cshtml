@@ -1,0 +1,57 @@
+﻿@model foursquare.Models.HomeModel
+@{
+    ViewBag.Title = "Welcome";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Current = "Welcome";
+}
+
+<div class="row">
+    <div class="col-xs-12 welcomeContentTextTitle">
+        <h4 class="">
+            <p></p>
+            @Model.welcome.Title
+        </h4>
+    </div>
+    <div class="col-xs-12 welcomeContentText">
+        <p>
+            @Html.Raw(@Model.welcome.Content)
+        </p>
+    </div>
+</div>
+<div class="row welcomeTeam">
+    @foreach (var welcomeTeam in Model.welcomeTeam)
+    {
+        <div class="col-lg-2 col-sm-4 welcomeContact">
+            <a href="~/Welcome/Bio/@welcomeTeam.Id" onclick="window.open(this.href,'','width=600,height=500,top=100,left=100');return false;">
+                @welcomeTeam.Name
+            </a>
+            <span>
+                @Html.Raw(@welcomeTeam.Title)               
+            </span>
+        </div>
+    }
+</div>
+
+@section Scripts {
+<script type="text/javascript">
+    $(".welcomeTeam").children().first().addClass("col-lg-offset-3");
+
+   
+    @*$(".welcomeTeam a").click(function (e) {
+        if (!$(e.target).hasClass('delete')) {
+            //var myWindow = window.open("/Welcome/Bio" + "/" + $(this).attr("id"), "", "width=600,height=500,top=100,left=100");
+            var geturl = '@Url.Action("Bio", "Welcome")';
+            var href = geturl + "/" + $(this).attr("id");
+            LoadAjaxContent(href);
+            return false;
+        }
+    });
+
+    function LoadAjaxContent(href) {
+        //window.location.href = href;
+        window.open(href, "", "width=600,height=500,top=100,left=100") = href;
+    }*@
+
+</script>
+
+}
